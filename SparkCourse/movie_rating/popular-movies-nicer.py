@@ -22,6 +22,7 @@ movieCounts = movies.reduceByKey(lambda x, y: x + y)
 flipped = movieCounts.map( lambda x : (x[1], x[0]))
 sortedMovies = flipped.sortByKey()
 
+#if working with key pair you can use [0] to refer to key and [1] is value
 sortedMoviesWithNames = sortedMovies.map(lambda countMovie : (nameDict.value[countMovie[1]], countMovie[0]))
 
 results = sortedMoviesWithNames.collect()
