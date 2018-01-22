@@ -18,7 +18,7 @@ lines = sc.textFile("marvel-graph.txt")
 
 pairings = lines.map(countCoOccurences)
 totalFriendsByCharacter = pairings.reduceByKey(lambda x, y : x + y)
-flipped = totalFriendsByCharacter.map(lambda xy : (xy[1], xy[0]))
+flipped = totalFriendsByCharacter.map(lambda (x, y) : (y, x))
 
 mostPopular = flipped.max()
 
